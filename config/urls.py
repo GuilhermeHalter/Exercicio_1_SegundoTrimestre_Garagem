@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import include, path
 
 from rest_framework.routers import DefaultRouter
+from usuario.router import router as usuario_router
 
 from garagem.views import CategoriaViewSet,AcessorioViewSet,ModeloViewSet,MarcaViewSet,VeiculoViewSet, CorViewSet
 
@@ -30,6 +31,7 @@ router.register(r"veiculo", VeiculoViewSet)
 router.register(r"cor", CorViewSet)
 
 urlpatterns = [
+    path("api/", include(usuario_router.urls)),
     path("admin/", admin.site.urls),
     path("", include(router.urls)),
 ]
